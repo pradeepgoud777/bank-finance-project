@@ -1,34 +1,34 @@
 pipeline{
     agent any
     stages{
-        stage('checkout the code from github'){
+        stage('Checkout the code from github'){
             steps{
                  git url: 'https://github.com/akshu20791/Banking-java-project/'
                  echo 'github url checkout'
             }
         }
-        stage('codecompile with akshat'){
+        stage('Code Compile'){
             steps{
                 echo 'starting compiling'
                 sh 'mvn compile'
             }
         }
-        stage('codetesting with akshat'){
+        stage('Code Testing'){
             steps{
                 sh 'mvn test'
             }
         }
-        stage('qa with akshat'){
+        stage('QA'){
             steps{
                 sh 'mvn checkstyle:checkstyle'
             }
         }
-        stage('package with akshat'){
+        stage('Package'){
             steps{
                 sh 'mvn package'
             }
         }
-        stage('run dockerfile'){
+        stage('Run dockerfile'){
           steps{
                sh 'docker build -t myimg .'
            }
